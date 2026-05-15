@@ -2,6 +2,10 @@
 Sqlite
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 typedef struct {
     char* buffer;
     size_t buffer_length;
@@ -40,13 +44,12 @@ void close_input_buffer(InputBuffer* input_buffer) {
 
 int main (int argc, char* argv[]) {
     // ask print loop
-    InputBuffer* inputBuffer = new_input_buffer();
-
+    InputBuffer* input_buffer = new_input_buffer();
 
     while(1){
         // print the response n read input
         print_prompt();
-        read_input(inputBuffer);
+        read_input(input_buffer);
 
         // process exit and catch command errors
         if (strcmp(input_buffer->buffer, ".exit") == 0) {
